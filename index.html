@@ -1,62 +1,111 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro</title>
+    <title>Crear cuenta | Code Nova</title>
     <link rel="stylesheet" href="estilos.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="logo">Code Nova</div>
-
-        <ul class="links-nav">
-          <li><a href="cursos.html">Cursos</a></li>
-          <li><a href="planes.html">Planes</a></li>
-          <li><a href="index.html">Registro</a></li>
-        </ul>
-      </nav>
+    <header class="cabecera">
+      <span class="marca">Code Nova</span>
+      <span>Registro de estudiantes</span>
     </header>
 
-    <main>
-      <section class="registro">
-        <form class="contenedor-formulario">
-          <h1>Crear una nueva cuenta</h1>
-          <p>Por favor complete los datos a continuación.</p>
+    <main class="tarjeta">
+      <h1>Crea tu cuenta</h1>
+      <p class="ayuda">
+        Todos los campos son obligatorios. Esta demostración no crea cuentas
+        reales. Usa datos de prueba.
+      </p>
 
-          <div class="fila-formulario">
+      <form id="formulario" novalidate>
+        <fieldset>
+          <legend>1. Datos personales</legend>
+
+          <div class="fila">
             <div class="campo">
-              <label>Nombre</label>
-              <input type="text" placeholder="" />
+              <label for="nombre">Nombre</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                autocomplete="given-name"
+                required
+              />
             </div>
 
             <div class="campo">
-              <label>Apellidos</label>
-              <input type="text" placeholder="" />
+              <label for="apellidos">Apellidos</label>
+              <input
+                id="apellidos"
+                name="apellidos"
+                type="text"
+                autocomplete="family-name"
+                required
+              />
             </div>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Datos de acceso</legend>
 
           <div class="campo">
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="" />
+            <label for="correo">Correo electrónico</label>
+            <input
+              id="correo"
+              name="correo"
+              type="email"
+              autocomplete="email"
+              placeholder="nombre@ejemplo.com"
+              required
+            />
           </div>
 
           <div class="campo">
-            <label>Contraseña</label>
-            <input type="password" placeholder="" />
+            <label for="clave">Contraseña de prueba</label>
+            <p id="ayuda-clave" class="ayuda">
+              Usa al menos 8 caracteres. No uses una contraseña real.
+            </p>
+
+            <div class="grupo-clave">
+              <input
+                id="clave"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                aria-describedby="ayuda-clave"
+                required
+              />
+
+              <button
+                id="mostrar-clave"
+                type="button"
+                class="boton-secundario"
+                aria-controls="clave"
+                aria-pressed="false"
+              >
+                Mostrar contraseña
+              </button>
+            </div>
           </div>
+        </fieldset>
 
-          <button class="boton-registro">Registrarme</button>
+        <p id="mensaje" class="mensaje" role="status"></p>
 
-          <hr />
+        <div class="acciones">
+          <button id="registrar" type="submit" class="boton-principal">
+            Crear cuenta de prueba
+          </button>
 
-          <p class="login">
-            ¿Ya tienes una cuenta?
-            <a href="#">Inicia sesión</a>
-          </p>
-        </form>
-      </section>
+          <button type="reset" class="boton-secundario">
+            Limpiar formulario
+          </button>
+        </div>
+      </form>
     </main>
+
+    <script src="app.js"></script>
   </body>
 </html>
